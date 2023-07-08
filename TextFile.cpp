@@ -79,8 +79,10 @@ namespace sdds
 
    void TextFile::setNoOfLines()
    {
+      //string function to grab the line
       int noOfLines = 0;
       string line;
+      //set new char for create local object "open"
       ifstream open(m_filename);
       if (open.is_open())
       {
@@ -96,28 +98,7 @@ namespace sdds
          m_filename = nullptr;
       }
       m_noOfLines = noOfLines;
-      // // set new char for create local object "open"
-      // char charater;
-      // std::ifstream open(m_filename);
-      // if (open.is_open())
-      // {
-      //    // read the file by open
-      //    while (!open.eof())
-      //    {
-      //       charater = open.get();
-      //       if (charater == '\n')
-      //       {
-      //          m_noOfLines++;
-      //       }
-      //       if (m_noOfLines == 0)
-      //       {
-      //          delete[] m_filename;
-      //          m_filename = nullptr;
-      //       }
-      //    }
-      //    m_noOfLines++;
-      // }
-      // open.close();
+   
    }
 
    void TextFile::loadText()
