@@ -1,0 +1,29 @@
+/***********************************************************************
+// Intro. to Object Oriented Programming
+// Workshop 6 Part 1
+// Version 1.0
+// Description
+// professor's tester program
+//
+// Name: Ngai Man Szeto
+// ID:180094211
+// Section: ZAA
+// Email:nszeto1@myseneca.ca
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+//
+/////////////////////////////////////////////////////////////////
+***********************************************************************
+
+This workshop is about using copy construct, copy assignment for resource input and output. And this workshop,
+it let me more understand what are copy construct, copy assignment. When I run the program at the first time.
+Error msg free memory not allocated. when I fix the error, the second error pop up. The program only display
+the first file " echoes.txt", it can't load the second file. At the Same time, when I run the program. 
+I made two save as file, "echoes.txt" and "seamus.txt", Therefore, When I check those file, the "echoes.txt"
+is empty, seamus has full text. I thought this is what copy construct and copy assignment process. And 
+the error is exactly  set a temp for storing the data for copy construct, but it had some error about loadtext 
+function. this is why one file empty and second file has full text. And finally I got 5 save as files, echoes.txt 
+and seamus.txt has full text data copy from the original.txt.  Two C_text.txt for the copy assignment. and one empty 
+file C_, I think this is the temp file when the program making copy for saving the data, and after run the program. 
+the temp file would be delete.
