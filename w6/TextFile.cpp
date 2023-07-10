@@ -218,7 +218,6 @@ namespace sdds
    std::ostream &TextFile::view(std::ostream &ostr) const
    {
       int fileNameLength = strLen(m_filename);
-      ifstream openObj(m_filename);
       if (*this && m_noOfLines >= 1)
       {
          //using iomanip
@@ -226,14 +225,11 @@ namespace sdds
          ostr << setfill('=');
          ostr << setw(fileNameLength) << "=" << endl;
          ostr << setfill(' ');
-
+         //display the text data
          unsigned int i = 0;
-         if (openObj.is_open())
-         {
-            std::string line;
-            while (getline(openObj, line))
+            while ( i < m_noOfLines)
             {
-               ostr << line.c_str() << endl;
+               ostr << m_testFile[i]<< endl;
                i++;
                if (i % m_pageSize == 0)
                {
@@ -241,8 +237,6 @@ namespace sdds
                   cin.ignore(1000, '\n');
                }
             }
-            openObj.close();
-         }
       }
       return ostr;
    }
@@ -286,7 +280,8 @@ namespace sdds
 
    ostream &operator<<(ostream &ostr, const TextFile &text)
    {
-      return text.view(ostr);
+      text.view(ostr)
+      return ostr;
    }
 
    istream &operator>>(istream &istr, TextFile &text)
