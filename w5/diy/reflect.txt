@@ -1,0 +1,27 @@
+/***********************************************************************
+// Intro. to Object Oriented Programming
+// Workshop 5 Part 2
+// Version 1.0
+// Description
+// professor's tester program
+//
+// Name: Ngai Man Szeto
+// ID:180094211
+// Section: ZAA
+// Email:nszeto1@myseneca.ca
+// Submission Date: 06-17-2023
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+//
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+
+this workshop is about overload function and helper function. 
+I didn't need to spend a lot of time to finish this workshop.
+before we a lot of practice about class, privacy and constructor function 
+and concepts. after workshop 3 and 4. It helps me to understand a lot 
+about basic before learning operator. otherwise I think I should be 
+more time of this workshop. And in this workshop, I think a little 
+bit challenge is part 1. I spend fill hour to fix a stupid mistake in 
+helper function. I pull the helper function inside the class.
