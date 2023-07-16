@@ -19,8 +19,9 @@
 #include <iomanip>
 #include <iostream>
 #include <ctime>
-using namespace std;
 #include "Date.h"
+using namespace std;
+
 namespace sdds
 {
    bool Date::validate()
@@ -161,26 +162,28 @@ namespace sdds
    {
       return RO.read(is);
    }
-   // in class helper
+   
+   //Overload operator   
+   //if same ,return true
    bool Date::operator==(const Date &newDate) const
    {
-      // current - pass in
+      
       bool same = (m_year == newDate.m_year && m_mon == newDate.m_mon && m_day == newDate.m_day);
       return same;
    }
-
+   //if return bigger the newDate or equal ,return true
    bool Date::operator>=(const Date &newDate) const
    {
       bool same = (*this > newDate || *this == newDate);
       return same;
    }
-
+ //if return smaller the newDate or equal ,return true
    bool Date::operator<=(const Date &newDate) const
    {
       bool same = (*this < newDate || *this == newDate);
       return same;
    }
-
+   //if any date smaller than newDate, return true
    bool Date::operator<(const Date &newDate) const
    {
       bool same = false;
@@ -214,6 +217,7 @@ namespace sdds
       return same;
    }
 
+//if any date bigger than newDate, return true
    bool Date::operator>(const Date &newDate) const
    {
       bool same = false;
@@ -247,15 +251,17 @@ namespace sdds
       return same;
    }
 
+   //return the minus value
    int Date::operator-(const Date &newDate) const
    {
-      // Current - pass in
+      
       return (daysSince0001_1_1() - newDate.daysSince0001_1_1());
    }
 
+   //return true , if no in bad
    Date::operator bool() const
    {
-      // need to use const prototype for return
+      
       return !bad();
    }
 };
