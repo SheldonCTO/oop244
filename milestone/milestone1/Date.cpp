@@ -123,7 +123,7 @@ namespace sdds
       {
          errCode(CIN_FAILED);
          is.clear();
-         is.ignore(1000,'\n');
+         is.ignore(1000, '\n');
       }
       else
       {
@@ -132,7 +132,7 @@ namespace sdds
          m_day = dd;
          validate();
          is.clear();
-         is.ignore(1000,'\n');
+         is.ignore(1000, '\n');
       }
       return is;
    }
@@ -162,28 +162,28 @@ namespace sdds
    {
       return RO.read(is);
    }
-   
-   //Overload operator   
-   //if same ,return true
+
+   // Overload operator
+   // if same ,return true
    bool Date::operator==(const Date &newDate) const
    {
-      
+
       bool same = (m_year == newDate.m_year && m_mon == newDate.m_mon && m_day == newDate.m_day);
       return same;
    }
-   //if return bigger the newDate or equal ,return true
+   // if return bigger the newDate or equal ,return true
    bool Date::operator>=(const Date &newDate) const
    {
       bool same = (*this > newDate || *this == newDate);
       return same;
    }
- //if return smaller the newDate or equal ,return true
+   // if return smaller the newDate or equal ,return true
    bool Date::operator<=(const Date &newDate) const
    {
       bool same = (*this < newDate || *this == newDate);
       return same;
    }
-   //if any date smaller than newDate, return true
+   // if any date smaller than newDate, return true
    bool Date::operator<(const Date &newDate) const
    {
       bool same = false;
@@ -217,7 +217,7 @@ namespace sdds
       return same;
    }
 
-//if any date bigger than newDate, return true
+   // if any date bigger than newDate, return true
    bool Date::operator>(const Date &newDate) const
    {
       bool same = false;
@@ -247,21 +247,27 @@ namespace sdds
             same = false;
          }
       }
-  
+
       return same;
    }
 
-   //return the minus value
+   // return the minus value
    int Date::operator-(const Date &newDate) const
    {
-      
+
       return (daysSince0001_1_1() - newDate.daysSince0001_1_1());
    }
 
-   //return true , if no in bad
+   // return true , if no in bad
    Date::operator bool() const
    {
-      
+
       return !bad();
+   }
+
+   bool Date::operator!=(const Date &newDate) const
+   {
+
+      return !(*this == newDate);
    }
 };
