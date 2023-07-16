@@ -19,6 +19,7 @@
 #include <iomanip>
 #include <iostream>
 #include <ctime>
+#include <string.h>
 #include "Menu.h"
 #include "Utils.h"
 
@@ -51,6 +52,7 @@ namespace sdds
 	MenuItem::~MenuItem()
 	{
 		delete[] m_itemName;
+		m_itemName = nullptr;
 	}
 
 	//overload operator return true, if m_itemName is valid
@@ -87,15 +89,15 @@ namespace sdds
 	{
 		if (title != nullptr)
 		{
-			m_title.m_itemName = new char(strlen(title) + 1);
+			m_title.m_itemName = new char[strlen(title) + 1];
 			strcpy(m_title.m_itemName, title);
 		}
 		// if title is invalid. deallocate the pointer, and DELETE the ARRAY
 		else
 		{
-			delete[] m_title.m_itemName;
+			delete[] m_title;
 			m_title.m_itemName = nullptr;
-			int i = 0;
+			unsigned int i = 0;
 			while (i < m_noOfItems)
 			{
 				delete m_item[i];
@@ -123,7 +125,7 @@ namespace sdds
 			displayTitle();
 			cout << ":" << endl;
 		}
-		int i = 0;
+		unsigned int i = 0;
 		while (i < m_noOfItems)
 		{
 			cout << " " << i + 1 << "- " << m_item[i]->m_itemName << endl;
@@ -144,11 +146,14 @@ namespace sdds
 	//delete the member pointer
 	Menu::~Menu()
 	{
-		delete[] m_title.m_itemName;
-		int i = 0;
+		delete[]m_title;
+		m_title.m_itemName = nullptr;
+		unsigned int i = 0;
 		while (i < m_noOfItems)
 		{
 			delete m_item[i];
+			m_item[i]=nullptr;
+			i++;
 		}
 	}
 
@@ -212,7 +217,7 @@ namespace sdds
 	}
 
 	
-	//overland , if current value is valid and member is smaller tthan the MAX
+	//overland , if current value is valid and member is smaller than the MAX
 	//allocate the member point
 	//set the no of item + 1
 	Menu &Menu::operator<<(const char *menuitemConent)
