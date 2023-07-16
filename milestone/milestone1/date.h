@@ -74,6 +74,7 @@ namespace sdds
       bool operator<(const Date &newDate) const;
       bool operator>(const Date &newDate) const;
       int operator-(const Date &newDate) const;
+      bool operator !=(const Date &newDate) const;
       operator bool()const;
    };
 
