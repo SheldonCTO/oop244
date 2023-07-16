@@ -57,8 +57,17 @@ namespace sdds
       int errCode() const;              // returns the error code or zero if date is valid
       const char *dateStatus() const;   // returns a string corresponding the current status of the date
       int currentYear() const;          // returns the m_CUR_YEAR value;
-      std::istream &read(std::istream &is = std::cin);
+      
+      // read is yy/mm/dd, and ignore any char
+      //if no ERROR, pass input to member
+      std::istream &read(std::istream &is = std::cin); // 
+
+      //display the date if in good status
+      //if bad, display the DATE_ERROR(errcode) 
       std::ostream &write(std::ostream &os = std::cout) const;
+      
+      //overload the comparison to compare member value and the newDate value
+
       bool operator==(const Date &newDate) const;
       bool operator>=(const Date &newDate) const;
       bool operator<=(const Date &newDate) const;
@@ -67,6 +76,8 @@ namespace sdds
       int operator-(const Date &newDate) const;
       operator bool()const;
    };
+
+   //helper function .Overloads of insertion and extraction operators
    std::ostream &operator<<(std::ostream &os, const Date &RO);
    std::istream &operator>>(std::istream &is, Date &RO);
 
