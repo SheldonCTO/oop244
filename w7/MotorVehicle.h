@@ -31,12 +31,10 @@ namespace sdds
 
 	class MotorVehicle
 	{
-		//set default private members to safe status
-		char* m_license{ nullptr };
+		//set default private members with MAX_SIZE
+		char m_license[MAX_LICE_NO];
 		int m_year = -1;
-		char* m_address{ nullptr };
-		
-		void setSafe();
+		char m_address[MAX_ADDRESS_SIZE];
 	public:
 			// construct memory
 			//set receives as parameters licence and year to member, if value is valid
