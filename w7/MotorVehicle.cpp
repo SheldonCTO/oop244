@@ -20,7 +20,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
-#include <cstring>
 #include "MotorVehicle.h"
 #include "cstring.h"
 
@@ -28,28 +27,16 @@ using namespace std;
 
 namespace sdds
 {
-	//private, set to safe
-	 void MotorVehicle::setSafe()
-	 {
-	 	if (m_year < 0 && m_license != nullptr && m_address != nullptr)
-	 	{
-	 		m_license=nullptr;
-	 		m_address= nullptr;
-	 		m_year = -1;
-	 	}
-	 }
-
-	// Construct allocate memory by setSafe() and receives as parameters license, year and "Factory"
+	// Construct allocate memory by MAX-SIZE and receives as parameters license, year and "Factory"
 	MotorVehicle::MotorVehicle(const char *license, int year)
 	{
-		setSafe();
+		
 		if (year > 0 && license != nullptr)
 		{
-			m_license = new char[strLen(license) + 1];
-			strCpy(m_license, license);
+			
+			strnCpy(m_license, license, MAX_LICE_NO);
 			m_year = year;
-			m_address = new char[strLen("Factory") + 1];
-			strCpy(m_address, "Factory");
+			strnCpy(m_address, "Factory",MAX_ADDRESS_SIZE);
 		}
 	}
 
@@ -57,16 +44,16 @@ namespace sdds
 	//|[    8w]| |[      20w] ---> [20w      ]|
 	void MotorVehicle::moveTo(const char *address)
 	{
-		if (strcmp(m_address, address) != 0)
+		if (strCmp(m_address, address) != 0)
 		{
 			cout << "|";
 			cout << right << setw(8) << m_license << "| |";
 			cout << right << setw(20) << m_address << " ---> ";
 			cout << left << setw(20) << address << "|" << endl;
-			m_address = new char[strlen(address) + 1];
 			strCpy(m_address, address);
 		}
 	}
+
 
 	// update fm
 	//| [YEAR] | [PLATE] | [ADDRESS]
