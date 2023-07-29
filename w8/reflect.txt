@@ -1,0 +1,28 @@
+/***********************************************************************
+// Intro. to Object Oriented Programming
+// Workshop 8
+// Version 1.0
+// Description
+// tester program
+// Name: Ngai Man Szeto
+// Student No: 180094211
+// Email: nszeto1
+// Section: ZAA
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+//
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+
+this workshop is about Virtual functions and Abstract base classes
+We are using Abstract class to pass the value from Line and Rectangle
+to LblShape. Class Shape is the interface class. ALl Original Data 
+doesn't need any class Line function definition to execute the output
+by Shape class.
+
+we can see in main.cpp from line 61, only insert data file to Shape class
+virtual function and helper to execute all data. and pass it to LblShape 
+and output all the data from Module Line and rectangle. From line 61 to 
+line 79. it only set the class signature to allocate the the new Shape class.
