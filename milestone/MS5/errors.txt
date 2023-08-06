@@ -1,0 +1,4 @@
+Book.cpp: In member function ‘virtual std::ostream& sdds::Book::write(std::ostream&) const’:
+Book.cpp:82:51: error: ‘strncpy’ was not declared in this scope
+    strncpy(tempAuthor, m_author, SDDS_AUTHOR_WIDTH);
+                                                   ^
