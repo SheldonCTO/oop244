@@ -185,7 +185,7 @@ namespace sdds
 			{
 				os << "0";
 			}
-			os << '\t'; m_date.write(os);
+			os << '\t'<< m_date;
 		}
 		return os;
 	}
