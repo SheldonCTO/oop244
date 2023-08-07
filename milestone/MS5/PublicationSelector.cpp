@@ -1,13 +1,3 @@
-// Final Project 
-// PublicationSelector
-// File PublicationSelector.h
-// Version 1.0
-// Author	Fardad Soleimanloo
-// Revision History
-// -----------------------------------------------------------
-// Name               Date                 Reason
-//
-/////////////////////////////////////////////////////////////////
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
@@ -109,7 +99,7 @@ namespace sdds {
       return *this;
    }
 
-   void PublicationSelector::reset() {
+    void PublicationSelector::reset() {
       delete[] m_pub;
       m_pub = new const Publication*[20];
       m_noOfPubs = 0;
@@ -130,7 +120,7 @@ namespace sdds {
       } while (retVal && retVal < 3);
       return retVal;
    }
-   void PublicationSelector::sort() {
+    void PublicationSelector::sort() {
       int i, j;
       const Publication* temp{};
       for (i = 0; i < m_noOfPubs - 1; i++) {
@@ -152,6 +142,7 @@ namespace sdds {
          }
       }
    }
+
    PublicationSelector::operator bool()const {
       return m_noOfPubs > 0;
    }
