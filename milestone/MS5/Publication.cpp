@@ -23,7 +23,7 @@
 #include <cstring>
 #include "Date.h"
 #include "Publication.h"
-#include "cstring.h"
+#include "Utils.h"
 #include "Lib.h"
 
 namespace sdds
@@ -35,7 +35,7 @@ namespace sdds
 		m_shelfId[0] = '\0';
 		m_membership = 0;
 		m_libRef = -1;
-		resetDate();
+		
 	}
 
 	Publication::~Publication()
@@ -57,7 +57,7 @@ namespace sdds
 		if (publication.m_title != nullptr)
 		{
 			delete[]m_title;
-			cs.cpyConstr(m_title, publication.m_title);
+			ut.aloCpy(m_title, publication.m_title);
 		}
 	}
 	Publication &Publication::operator=(const Publication &publication)
@@ -76,7 +76,7 @@ namespace sdds
 				m_title = nullptr;
 				m_title = new char[strlen(publication.m_title) + 1];
 				delete[]m_title;
-				cs.cpyConstr(m_title, publication.m_title);
+				ut.aloCpy(m_title, publication.m_title);
 			}
 			else
 			{
@@ -162,20 +162,20 @@ namespace sdds
 			strncpy(displayTitle, m_title, SDDS_TITLE_WIDTH);
 			os << "| " << m_shelfId << " | ";
 			os << std::setw(30) << std::left << std::setfill('.') << displayTitle << " | ";
-			if (m_membership != 0)
+			if (m_membership == 0)
 			{
-				os << m_membership;
+				os << " N/A ";
 			}
 			else
 			{
-				os << " N/A ";
+				os << m_membership;
 			}
 			os << " | " << m_date << " |";
 		}
 		else
 		{
 			// print type() and member data  with \t
-			os << type() << '\t';
+			os << type();
 			os << '\t' << m_libRef << '\t' << m_shelfId << '\t' << m_title << '\t';
 			if (m_membership != 0)
 			{
@@ -183,9 +183,9 @@ namespace sdds
 			}
 			else
 			{
-				os << " 0 ";
+				os << "0";
 			}
-			os << '\t' << m_date<< "abc";
+			os << '\t'; m_date.write(os);
 		}
 		return os;
 	}
